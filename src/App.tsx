@@ -1,33 +1,23 @@
 import React from 'react';
-import { useQuery, gql } from '@apollo/client';
 import './App.css';
-import { TScore } from './types';
-
-const HIGH_SCORES = gql`
-  query GetHighScores {
-    allScores(orderBy: "score_DESC") {
-      player {
-        name
-      }
-      score
-    }
-  }
-`;
+import IsGameOnProvider from './contexts/IsGameOnContext';
+import { UserProvider } from './contexts/UserContext';
+import Main from './views/Main';
+import SnackbarProvider from './contexts/SnackbarContext';
+import Snackbar from './components/Snackbar';
 
 const App = () => {
-  const { loading, error, data } = useQuery(HIGH_SCORES);
-
-  if (error) {
-    console.error(error);
-  }
 
   return (
     <div className="App">
-      {loading ? (
-        <p>Loading data...</p>
-      ) : (
-        <pre>{data.allScores.map((score: TScore) => `${score.player.name} : ${score.score}\n`)}</pre>
-      )}
+      <SnackbarProvider>
+        <UserProvider>
+          <IsGameOnProvider>
+            <Main />
+            <Snackbar />
+          </IsGameOnProvider>
+        </UserProvider>
+      </SnackbarProvider>
     </div>
   );
 };

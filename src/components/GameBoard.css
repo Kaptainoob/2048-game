@@ -1,0 +1,7 @@
+.GameBoard {
+    background-color: black;
+    padding: 0.25rem;
+    width: fit-content;
+    max-width: 100%;
+    border-radius: 0.25rem;
+}

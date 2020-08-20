@@ -1,0 +1,22 @@
+.game-data-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-score-container {
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+.game-score-container > span {
+    padding: 0 0.25rem;
+}
+
+.game-score-label {
+    font-weight: lighter;
+}
+
+.game-score-value {
+    font-weight: bolder;
+}
